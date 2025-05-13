@@ -12,14 +12,12 @@ if __name__ == '__main__':
     photo_capture = application.session.service("ALPhotoCapture")
     video_service = application.session.service("ALVideoDevice")
 
-    """"
+
     print(posture.getPosture())
     if posture.getPosture() != "Stand":
-        posture.goToPosture("Stand", 0.4) #second parameter is speed
-
+        posture.goToPosture("Stand", 0.2) #second parameter is speed
     else :
-        posture.goToPosture("Crouch", 0.4)
-    """
+        posture.goToPosture("Crouch", 0.2)
 
     resolution = 2  # VGA
     colorSpace = 11  # RGB
