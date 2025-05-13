@@ -1,23 +1,7 @@
-import socket
+from create_server import *
 import os
 from mistralai import Mistral
 from dotenv import load_dotenv
-from signal import signal, SIGPIPE, SIG_DFL
-
-signal(SIGPIPE,SIG_DFL)
-
-def create_server(HOST = 'localhost',PORT = 8001, max_simultaneous_connection = 1):
-
-    # Create a socket object 
-    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
-    
-    # Bind to an address and port 
-    server_socket.bind((HOST, PORT)) 
-    server_socket.listen(max_simultaneous_connection)
-    
-    print("Server is listening...")
-    
-    return server_socket
 
 if __name__ == "__main__" :
     load_dotenv()
