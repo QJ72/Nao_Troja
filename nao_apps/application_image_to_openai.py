@@ -1,6 +1,6 @@
 import qi
 from PIL import Image
-from request_openai import send_image_to_server
+from nao_apps.clients.utilities import send_image_to_server
 
 if __name__ == '__main__':
     #default url : tcp://127.0.0.1:9559
@@ -14,10 +14,8 @@ if __name__ == '__main__':
 
 
     print(posture.getPosture())
-    if posture.getPosture() != "Stand":
-        posture.goToPosture("Stand", 0.2) #second parameter is speed
-    else :
-        posture.goToPosture("Crouch", 0.2)
+    if posture.getPosture() != "Sit":
+        posture.goToPosture("Sit", 0.2) #second parameter is speed
 
     resolution = 2  # VGA
     colorSpace = 11  # RGB

@@ -1,33 +1,35 @@
 import cv2
 import numpy as np
 from nao_apps.clients.utilities import return_center_from_server_vision
-from nao_apps.nao_classes import Pointer
+from nao_apps.nao_classes.Pointer import Pointer
 
-class NaoPointer(Pointer):
-    def __init__(self, motion_service, video_service,resolution = 2, colorSpace = 11): #resolution and colorSpace a bit arbitrary
-        Pointer.__init__(self, motion_service)
+class PointerToObject:
+    def __init__(self, motion_service, video_service,resolution = 2, colorSpace = 11): #resolution and colorSpace are a bit arbitrary
+        motion_service.wakeUp()
+        self.pointer = Pointer(motion_service)
+        self.motion_service = motion_service
         self.video_service = video_service
         self.videoClient = video_service.subscribe("Naopointer_client", resolution, colorSpace, 5)
-        motion_service.setStiffnesses("Head", 1.0)
+        print("Is head moving ?", self.motion_service.getStiffnesses("Head"))
 
     def unsuscribe_video_service(self):
         self.video_service.unsubscribe("Naopointer_client")
 
-    def __adjust_head(self, difference_between_centers, pixels_precision = 20):
+    def __adjust_head(self, difference_between_centers, pixels_precision = 30):
         head_yaw = self.motion_service.getAngles("HeadYaw", True)[0]
         head_pitch = self.motion_service.getAngles("HeadPitch", True)[0]
 
-        if np.sum(difference_between_centers) > 2*pixels_precision:
-            print("Difference between centers : ", difference_between_centers)
+        print("Difference between centers : ", difference_between_centers)
+        if np.sum(np.abs(difference_between_centers)) > 2*pixels_precision:
             if difference_between_centers[0] < -pixels_precision :
-                self.motion_service.setAngles("HeadYaw", head_yaw+1, 0.2)
+                self.motion_service.setAngles("HeadYaw", head_yaw+0.2, 0.2)
             elif difference_between_centers[0] > pixels_precision :
-                self.motion_service.setAngles("HeadYaw", head_yaw-1, 0.2)
+                self.motion_service.setAngles("HeadYaw", head_yaw-0.2, 0.2)
 
             if difference_between_centers[1] < -pixels_precision :
-                self.motion_service.setAngles("HeadPitch", head_pitch+1, 0.2)
+                self.motion_service.setAngles("HeadPitch", head_pitch-0.2, 0.2)
             elif difference_between_centers[1] > pixels_precision :
-                self.motion_service.setAngles("HeadPitch", head_pitch-1, 0.2)
+                self.motion_service.setAngles("HeadPitch", head_pitch+0.2, 0.2)
             self.look_at_target()
 
 
@@ -47,21 +49,27 @@ class NaoPointer(Pointer):
 
     def save_new_image(self):
         new_image, _, _ = self.__get_new_image_from_nao()
-        cv2.imwrite("../nao_screenshot.jpg", new_image)
+        cv2.imwrite("nao_screenshot.jpg", new_image)
 
     def look_at_target(self):
+        print("Look at target")
         image_data, image_width, image_height = self.__get_new_image_from_nao()
-        cv2.imwrite("../nao_screenshot.jpg", image_data)
+        cv2.imwrite("nao_screenshot.jpg", image_data)
         center_image = np.array([image_width//2, image_height//2])
-
-        center_object = return_center_from_server_vision("../nao_screenshot.jpg", HOST='127.0.0.2', PORT=8002)
+        print("wait for server")
+        center_object = return_center_from_server_vision("nao_screenshot.jpg", HOST='127.0.0.2', PORT=8002)
+        print("center : ", center_object)
+        if center_object == "exit":
+            print("No object detected")
+            return
         diff = center_object - center_image
 
         self.__adjust_head(diff)
 
     def point_at_target(self):
+        print("point at target")
         self.look_at_target()
-        self.point_in_gaze_direction()
+        self.pointer.point_in_gaze_direction()
 
     def test_look_at_target(self):
         new_image, _, _ = self.__get_new_image_from_nao()
