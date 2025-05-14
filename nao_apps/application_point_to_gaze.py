@@ -1,6 +1,6 @@
 import time
 import qi
-from pointer import *
+from nao_apps.nao_classes.Pointer import *
 
 if __name__ == '__main__':
     #default url : tcp://127.0.0.1:9559
@@ -27,14 +27,14 @@ if __name__ == '__main__':
     face_tracker_service.startTracker()
     print("start tracking")
 
-    #resolution = 2  # VGA
-    #colorSpace = 11  # RGB
+    resolution = 2  # VGA
+    colorSpace = 11  # RGB
 
-    #videoClient = video_service.subscribe("python_client", resolution, colorSpace, 5)
+    videoClient = video_service.subscribe("python_client", resolution, colorSpace, 5)
 
-    #img = video_service.getImageRemote(videoClient)
+    img = video_service.getImageRemote(videoClient)
 
-    #video_service.unsubscribe(videoClient)
+    video_service.unsubscribe(videoClient)
 
     set_joins = ["RShoulderPitch", "RShoulderRoll", "RElbowRoll", "RElbowYaw", "RWristYaw"]
     set_coords = [0.2, -0.3, 0.0, 0.0, 0.0]
