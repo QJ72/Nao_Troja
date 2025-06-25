@@ -7,3 +7,5 @@ servers/.env
 extern
 cpp_files
 
+__pycache__
+*.pyc

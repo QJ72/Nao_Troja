@@ -1,10 +1,11 @@
 # Nao_Troja
 
-##  python requirements :
-    
-    qi
-    pybind11
-    numpy
-    opencv
-    ultralytics
-    openai
+Python3
+
+# Libraries used :
+- opencv
+- numpy
+- openai
+- ultralytics
+- qi
+- PIL 
