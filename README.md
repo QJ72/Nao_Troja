@@ -1,4 +1,11 @@
 # Nao_Troja
 
-Use python2 for nao-apps \
-Use python3 for servers
+Python3
+
+# Libraries used :
+- opencv
+- numpy
+- openai
+- ultralytics
+- qi
+- PIL 
