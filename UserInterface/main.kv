@@ -1,17 +1,77 @@
-<PongGame>:
-    canvas:
-        Rectangle:
-            pos: self.center_x - 5, 0
-            size: 10, self.height
+#:kivy 1.0.9
 
-    Label:
-        font_size: 70
-        center_x: root.width / 4
-        top: root.top - 50
-        text: "0"
+<ServerBox@BoxLayout>:
+    orientation: 'vertical'
+    spacing: 1
+    padding: 1
 
+    BoxLayout:
+        size_hint_y: None
+        height: 40
+        spacing: 1
+        Label:
+            text: "Server call API"
+            size_hint_x: 0.8
+        CheckBox:
+            active: False
+            on_active: root.checkbox_callback_call_API(self, self.active)
+
+    BoxLayout:
+        size_hint_y: None
+        height: 40
+        spacing: 1
+        Label:
+            text: "Server Computer Vision"
+            size_hint_x: 0.8
+        CheckBox:
+            active: False
+            on_active: root.checkbox_callback_computer_vision(self, self.active)
+
+<NonClickableCheckBox@CheckBox>:
+
+
+<NaoConnector@BoxLayout>:
+    cols: 2
+    rows: 4
+    spacing: 1
+    padding: 1
+    row_default_height: 40
+    row_force_default: True
     Label:
-        font_size: 70
-        center_x: root.width * 3 / 4
-        top: root.top - 50
-        text: "0"
+        text: "HOST :"
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+    TextInput:
+        text: "10.11.45.211"
+        input_filter: 'int'  
+        height: 20
+        multiline: False
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        on_text_validate: root.textinput_callback_host(self.text)
+    Label:
+        text: "PORT :"
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+    TextInput:
+        text: "9559"
+        input_filter: 'int'  
+        height: 20
+        multiline: False
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        on_text_validate: root.textinput_callback_port(self.text)
+    Label:
+        text: "Connexion to Nao :"
+        size_hint_x: 0.8
+    NonClickableCheckBox:
+        id : is_nao_connected
+        active: False
+        on_active: pass
+    Button:
+        text: "connect to Nao"
+        on_press: root.connect_to_nao()
+            
+<MainWindow@FlotLayout>:
+    NaoConnector:
+        size_hint: 0.3, 0.3
+        pos_hint: {'top': 1, 'right': 0.5}
+    ServerBox:
+        size_hint: 0.3, 0.3
+        pos_hint: {'right': 1, 'top': 1}

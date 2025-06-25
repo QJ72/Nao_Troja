@@ -1,0 +1,9 @@
+.idea/
+.vscode/
+
+servers/runs
+servers/.env
+
+extern
+cpp_files
+
