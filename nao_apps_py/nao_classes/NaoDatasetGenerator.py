@@ -42,14 +42,6 @@ class NaoDatasetGenerator:
                 "output_type": "joint_positions",
                 "joint_names": joint_names,
                 "joint_units": "radians",
-                "joint_limits": {
-                    "RShoulderPitch": [-2.0857, 2.0857],
-                    "RShoulderRoll": [-0.3142, 1.3265],
-                    "RElbowYaw": [-2.0857, 2.0857],
-                    "RElbowRoll": [0.0349, 1.5446],
-                    "RWristYaw": [-1.8238, 1.8238],
-                    "RHand": [0.0, 1.0]
-                },
                 "num_samples": 0,
                 "num_joints": len(joint_names)
             },
