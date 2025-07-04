@@ -55,7 +55,6 @@ def main():
 
     target_angles = model.predict_joints(image).tolist()
     print("target_angles: ", target_angles)
-    #motion_service.setStiffnesses(effector, 0)[0.7164199352264404, -0.28229808807373047, 0.11961007118225098, 0.9986758232116699, -0.4019498825073242, 0.4336000084877014]
 
     left_arm_manager.move_to_target_joints_angles(left_starting_and_end_angles)
 
