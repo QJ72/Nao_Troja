@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Widget</class>
+ <widget class="QWidget" name="Widget">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>900</width>
+    <height>715</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Widget</string>
+  </property>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>10</y>
+     <width>241</width>
+     <height>204</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>HOST :</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QCheckBox" name="checkBoxConnection">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LayoutDirection::LeftToRight</enum>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>PORT :</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>Connexion to Nao :</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QPushButton" name="pushButtonConnectToNao">
+      <property name="text">
+       <string>Connect to Nao</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QPlainTextEdit" name="plainTextEditHost">
+      <property name="plainText">
+       <string>10.11.45.211</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QPlainTextEdit" name="plainTextEditPort">
+      <property name="plainText">
+       <string>9559</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>10</y>
+     <width>357</width>
+     <height>356</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="2" column="1">
+     <widget class="QPlainTextEdit" name="plainTextEditDatasetParentFolder">
+      <property name="plainText">
+       <string>datasets</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QPushButton" name="pushButtonDataset">
+      <property name="text">
+       <string>Create/Load</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QCheckBox" name="checkBoxDataset">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QPlainTextEdit" name="plainTextEditDatasetName">
+      <property name="plainText">
+       <string>dummy dataset</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QPlainTextEdit" name="plainTextEditJsonFile">
+      <property name="plainText">
+       <string>annotations.json</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_6">
+      <property name="text">
+       <string>Json file :</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_5">
+      <property name="text">
+       <string>Name of Dataset :</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_4">
+      <property name="text">
+       <string>Dataset ready :</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_7">
+      <property name="text">
+       <string>Dataset Parent Directory :</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_11">
+      <property name="text">
+       <string>Set of joints :</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QPlainTextEdit" name="plainTextEditSetOfJoints">
+      <property name="plainText">
+       <string>RArm</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget_3">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>350</y>
+     <width>361</width>
+     <height>312</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_3">
+    <item row="1" column="1">
+     <widget class="QPlainTextEdit" name="plainTextEditModelName">
+      <property name="plainText">
+       <string>dummy_model.pth</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_9">
+      <property name="text">
+       <string>Training :</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QPlainTextEdit" name="plainTextEditNeuralNetworkDirectory">
+      <property name="plainText">
+       <string>neural_network</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_8">
+      <property name="text">
+       <string>Neural Network Directory : </string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_16">
+      <property name="text">
+       <string>Model Name :</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_10">
+      <property name="text">
+       <string>Number of epoch :</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QPlainTextEdit" name="plainTextEditEpochs">
+      <property name="plainText">
+       <string>10</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QPushButton" name="pushButtonInitialisedTraining">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Start training</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QCheckBox" name="checkBoxTraining">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QPushButton" name="pushButtonGrabBallWithModel">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Grab Ball with Model</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget_4">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>220</y>
+     <width>203</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_4">
+    <item row="0" column="0">
+     <widget class="QComboBox" name="comboBoxSelectAction">
+      <item>
+       <property name="text">
+        <string>First Set Up</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Calibrate Nao</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Relax Nao</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Get positions of the joints</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Relax Current Joints</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Set Up</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Get Positions current joints</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Grab Ball</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QPushButton" name="pushButtonAction">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Execute Action</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget_5">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>435</y>
+     <width>281</width>
+     <height>280</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_5">
+    <item row="2" column="1">
+     <widget class="QPlainTextEdit" name="plainTextEditImageName">
+      <property name="plainText">
+       <string>dummy_image</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QPushButton" name="pushButtonCollectImages">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Collect Images</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QCheckBox" name="checkBoxCollectImage">
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_13">
+      <property name="text">
+       <string>Image Name</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QPlainTextEdit" name="plainTextEditNumberOfImages">
+      <property name="plainText">
+       <string>100</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_14">
+      <property name="text">
+       <string>For Training</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_12">
+      <property name="text">
+       <string>Number of Images :</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_15">
+      <property name="text">
+       <string>Target Angles</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QPlainTextEdit" name="plainTextEditTargetAngles"/>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

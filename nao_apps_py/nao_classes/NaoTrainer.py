@@ -2,6 +2,11 @@ import cv2
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
+
+# Set threads for 18-core processor
+torch.set_num_threads(16)  # Leave 2 cores for system
+torch.set_num_interop_threads(2)
+
 import torch.nn as nn
 import torch.optim as optim
 import torchvision.transforms as transforms
@@ -13,10 +18,13 @@ from nao_apps_py.nao_classes.NaoDataset import NaoDataset
 
 
 class NaoTrainer:
-    def __init__(self, dataset_name ="dataset", json_file ="annotations.json", neural_network_dir ="neural_network"):
-        self.dataset_dir = f"datasets/{dataset_name}"
+    def __init__(self, dataset_name ="dataset", json_file ="annotations.json", neural_network_dir ="neural_network",
+                 dataset_parent_folder ="datasets"):
+        self.dataset_dir = f"{dataset_parent_folder}/{dataset_name}"
         self.json_file = json_file
         self.neural_network_dir = neural_network_dir
+
+        self.model_name = "dummy_model"
 
         self.transform = transforms.Compose([
             transforms.ToPILImage(),
@@ -40,7 +48,6 @@ class NaoTrainer:
         self.criterion = None
         self.scheduler = None
         self._setup_cpu_optimization()
-        
 
     def _setup_device(self):
         if torch.cuda.is_available():
@@ -54,11 +61,11 @@ class NaoTrainer:
             print("Using CPU (Intel GPU support not available)")
         return self.device
 
-    def _setup_cpu_optimization(self):
-        # Set threads for 18-core processor
-        torch.set_num_threads(16)  # Leave 2 cores for system
-        torch.set_num_interop_threads(2)
+    def set_model_name(self, model_name: str):
+        self.model_name = model_name
+        return model_name
 
+    def _setup_cpu_optimization(self):
         # Enable Intel MKL optimizations
         os.environ['MKL_NUM_THREADS'] = '16'
         os.environ['OMP_NUM_THREADS'] = '16'
@@ -83,8 +90,8 @@ class NaoTrainer:
 
         return self.train_loader, self.test_loader
 
-    def create_model(self):
-        self.model = JointAnglesPredictor(num_joints=6).to(self.device)
+    def create_model(self, num_joints = 6):
+        self.model = JointAnglesPredictor(num_joints).to(self.device)
 
         self.criterion = nn.MSELoss()
         self.optimizer = optim.Adam(self.model.parameters(), lr=0.001, weight_decay=1e-4)
@@ -143,7 +150,7 @@ class NaoTrainer:
 
             if val_loss < best_val_loss:
                 best_val_loss = val_loss
-                torch.save(self.model.state_dict(), f'{self.neural_network_dir}/best_nao_model6.pth')
+                torch.save(self.model.state_dict(), f'{self.neural_network_dir}/{self.model_name}')
 
             if epoch % 10 == 0:
                 print(f'Epoch {epoch+1:3d}: Train Loss: {train_loss:.6f}, Val Loss: {val_loss:.6f}')
