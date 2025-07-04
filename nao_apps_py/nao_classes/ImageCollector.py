@@ -9,8 +9,9 @@ class ImageCollector:
         self.video_service = video_service
         self.video_client = video_client
         self.set_of_joints = set_of_joints
-        self.dataset_path = f"datasets/{dataset_name}"
-        self.nao_dataset_generator = NaoDatasetGenerator(dataset_name)
+        if dataset_name is not None:
+            self.dataset_path = f"datasets/{dataset_name}"
+            self.nao_dataset_generator = NaoDatasetGenerator(dataset_name)
 
     def get_new_image_from_nao(self):
         new_image = self.video_service.getImageRemote(self.video_client)
@@ -22,6 +23,9 @@ class ImageCollector:
         image_data = new_image[6]
 
         return Image.frombytes("RGB", (image_width, image_height), image_data)
+
+    def mirror_image(self,image):
+        return image.transpose(method=Image.FLIP_LEFT_RIGHT)
 
     def _save_image(self, image,file_name):
         if image is None:

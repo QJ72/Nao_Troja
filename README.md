@@ -1,11 +1,11 @@
 # Nao_Troja
 
-Python3
 
-# Libraries used :
+# Python3, Libraries used :
 - opencv
 - numpy
 - openai
 - ultralytics
 - qi
-- PIL 
+- PIL
+- PySide6
