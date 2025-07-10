@@ -131,6 +131,7 @@ class Widget(QWidget):
         if self.ui.checkBoxConnection.isChecked() and self.ui.checkBoxDataset.isChecked():
             self.ui.pushButtonCollectImages.setEnabled(True)
             self.ui.pushButtonGrabBallWithModel.setEnabled(True)
+            self.image_collector = ImageCollector(self.nao_vision_manager.get_video_service(),self.nao_vision_manager.get_video_client(), self.joints_lists(), self.ui.plainTextEditDatasetName.toPlainText())
             return True
         self.ui.pushButtonCollectImages.setEnabled(False)
         self.ui.pushButtonGrabBallWithModel.setEnabled(False)

@@ -1,5 +1,3 @@
-import time
-
 import qi
 
 from nao_apps_py.nao_classes.ArmManager import ArmManager

@@ -2,7 +2,7 @@ from mistralai import Mistral
 
 #Need testing for image format
 
-class CallerGPT:
+class CallerMisTral:
     def __init__(self, key, model="gpt-4o-mini"): #model choice arbitrary
         self.client = Mistral(api_key=key)
         self.model = model

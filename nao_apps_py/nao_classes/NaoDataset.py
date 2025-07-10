@@ -84,8 +84,6 @@ class NaoDataset(Dataset):
         return self.joint_names
 
     def get_joint_limits(self):
-        """Return joint limits if available in metadata"""
-        # You can extend this to read from metadata
         return {
             'RShoulderPitch': [-2.0857, 2.0857],
             'RShoulderRoll': [-0.3142, 1.3265],
