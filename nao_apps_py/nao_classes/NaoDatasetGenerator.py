@@ -1,6 +1,5 @@
 import os
 import json
-import shutil
 
 from nao_apps_py.nao_classes.NaoConstants import *
 

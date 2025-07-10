@@ -1,11 +1,6 @@
 # Nao_Troja
 
-
-# Python3, Libraries used :
-- opencv
-- numpy
-- openai
-- ultralytics
-- qi
-- PIL
-- PySide6
+Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```

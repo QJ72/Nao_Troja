@@ -13,7 +13,6 @@ joints_in_RArm = ["RShoulderPitch", "RShoulderRoll", "RElbowYaw", "RElbowRoll", 
 joints_in_LArm = ["LShoulderPitch", "LShoulderRoll", "LElbowYaw", "LElbowRoll", "LWristYaw", "LHand"]
 
 def main():
-    # default url : tcp://127.0.0.1:9559
     session = qi.Session()
     session.connect("tcp://10.11.45.211:9559")
     motion_service = session.service("ALMotion")

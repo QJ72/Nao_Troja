@@ -1,4 +1,3 @@
-from errno import EHOSTUNREACH
 import time
 
 import qi
